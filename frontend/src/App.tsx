@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-
 interface Product {
   id: string
   name: string
@@ -14,7 +13,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/products')
+    fetch('https://learning-inventory-chi.vercel.app/api/products')
       .then(res => res.json())
       .then(data => {
         setProducts(data)
