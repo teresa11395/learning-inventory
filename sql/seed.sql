@@ -36,3 +36,18 @@ WHERE name = 'Laptop Pro 15';
 -- -------------------------------------------------------------
 DELETE FROM products
 WHERE name = 'Botella Térmica';
+-- -------------------------------------------------------------
+-- INNER JOIN: productos con nombre de categoría
+-- -------------------------------------------------------------
+SELECT p.name, p.price, c.name AS categoria
+FROM products p
+INNER JOIN categories c ON p.category_id = c.id;
+
+-- -------------------------------------------------------------
+-- GROUP BY + COUNT: total de productos por categoría
+-- -------------------------------------------------------------
+SELECT c.name AS categoria, COUNT(p.id) AS total_productos
+FROM categories c
+LEFT JOIN products p ON c.id = p.category_id
+GROUP BY c.name
+ORDER BY total_productos DESC;
